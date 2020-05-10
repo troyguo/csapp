@@ -1,7 +1,8 @@
 /*
- * show-bytes.c
+ * show-bytes-more.c
  */
 
+//2.57
 #include <stdio.h>
 
 
@@ -34,6 +35,23 @@ void show_pointer(void *x)
 	show_bytes((byte_pointer)&x, sizeof(void *));
 }
 
+//2.57 add more
+void show_short(short x)
+{
+	show_bytes((byte_pointer)&x, sizeof(short));
+}
+
+void show_long(long x)
+{
+	show_bytes((byte_pointer)&x, sizeof(long));
+}
+
+void show_double(long x)
+{
+	show_bytes((byte_pointer)&x, sizeof(double));
+}
+//2.57 add more ends
+
 void test_show_bytes (int val)
 {
 	int ival = val;
@@ -41,17 +59,26 @@ void test_show_bytes (int val)
 	float fval = (float) ival;
 	int *pval = &ival;
 
+	//2.57 adds
+	short s_val = (short) val;
+	long l_val = (long) val;
+	double d_val = (double) val;
+
 	show_int(ival);
 	show_float(fval);
 	show_pointer(pval);
 
+	//2.57 adds
+	show_short(s_val);
+	show_long(l_val);
+	show_double(d_val);
 
 }
 
 int main(int argc, char *argv[])
 {
 
-	int test_num = 328;
+	int test_num = 328; //0x148
 
 	test_show_bytes(test_num);
 
